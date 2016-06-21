@@ -68,15 +68,25 @@ namespace WeeklyRobot.Service
         private void Reset()
         {
             Logger.Debug($"Reset");
-            if (Config.Get<DateTime>("Time").ToString("yyyy-MM-dd") != DateTime.Now.ToString("yyyy-MM-dd"))
+            var time = Config.Get<DateTime>("Time");
+            if (time.DayOfYear != DateTime.Now.DayOfYear)
             {
                 Config.Set(nameof(ReportType.Day), false);
-                Config.Set(nameof(ReportType.Week), false);
-                Config.Set(nameof(ReportType.Month), false);
-                Config.Set(nameof(ReportType.Year), false);
                 Config.Set("Time", DateTime.Now.ToString("yyyy-MM-dd"));
-                Logger.Debug($"Reset Done.");
             }
+            if (time.DayOfWeek != DayOfWeek.Friday)
+            {
+                Config.Set(nameof(ReportType.Week), false);
+            }
+            if (DateTime.Now.Day < DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) - 10)
+            {
+                Config.Set(nameof(ReportType.Month), false);
+            }
+            if (DateTime.Now.DayOfYear > 2)
+            {
+                Config.Set(nameof(ReportType.Year), false);
+            }
+           
         }
 
     }
