@@ -8,6 +8,7 @@ namespace WeeklyRobot.Service
     {
         public static T Get<T>(string key)
         {
+            Logger.Debug($"Get\t{key}");
             var value = default(T);
             if (TryGet(key, out value))
             {
@@ -20,6 +21,7 @@ namespace WeeklyRobot.Service
 
         public static T TryGet<T>(string key, T defaultValue)
         {
+            Logger.Debug($"Get\t{key}");
             var value = default(T);
             if (TryGet(key, out value))
             {
@@ -58,6 +60,7 @@ namespace WeeklyRobot.Service
 
         public static void Set<T>(string key, T value)
         {
+            Logger.Debug($"Set\t{key}:{value}");
             var valueString = string.Empty;
             if (!typeof(T).Name.Equals("string", StringComparison.OrdinalIgnoreCase) && typeof(T).IsClass)
             {

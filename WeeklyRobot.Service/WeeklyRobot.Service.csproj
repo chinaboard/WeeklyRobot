@@ -46,11 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionScheduler.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="HttpHelper.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="PostBody.cs" />
+    <Compile Include="ReportType.cs" />
+    <Compile Include="SmtpHelper.cs" />
     <Compile Include="WeeklyRobotService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

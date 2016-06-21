@@ -8,6 +8,7 @@ namespace WeeklyRobot.Service
     {
         public static string Post(string url, PostBody postBody, int timeout = 5000)
         {
+            Logger.Debug($"Post\t{url}");
             var bytes = Encoding.UTF8.GetBytes(postBody.ToString());
             var request = WebRequest.Create(url) as HttpWebRequest;
 
