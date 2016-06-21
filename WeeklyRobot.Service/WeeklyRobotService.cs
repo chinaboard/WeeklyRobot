@@ -86,7 +86,7 @@ namespace WeeklyRobot.Service
             {
                 Config.Set(nameof(ReportType.Year), false);
             }
-           
+
         }
 
     }
