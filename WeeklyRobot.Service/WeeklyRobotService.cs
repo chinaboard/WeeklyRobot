@@ -54,13 +54,9 @@ namespace WeeklyRobot.Service
             {
                 list.Add(ReportType.Week);
             }
-            if (DateTime.Now.Day >= DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) - 2)
+            if (DateTime.Now.Day == 1)//每月1号
             {
                 list.Add(ReportType.Month);
-            }
-            if (DateTime.Now.DayOfYear < 2)
-            {
-                list.Add(ReportType.Year);
             }
             return list;
         }
@@ -82,11 +78,6 @@ namespace WeeklyRobot.Service
             {
                 Config.Set(nameof(ReportType.Month), false);
             }
-            if (DateTime.Now.DayOfYear > 2)
-            {
-                Config.Set(nameof(ReportType.Year), false);
-            }
-
         }
 
     }
